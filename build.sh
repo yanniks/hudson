@@ -82,9 +82,9 @@ then
 fi
 
 git config --global user.name $(whoami)@$NODE_NAME
-git config --global user.email jenkins@cyanogenmod.com
+git config --global user.email kontakt@yanniks.de
 
-if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10" ]]; then 
+if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10.1" ]]; then 
    JENKINS_BUILD_DIR=jellybean
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
@@ -250,7 +250,7 @@ fi
 TIME_SINCE_LAST_CLEAN=$(expr $(date +%s) - $LAST_CLEAN)
 # convert this to hours
 TIME_SINCE_LAST_CLEAN=$(expr $TIME_SINCE_LAST_CLEAN / 60 / 60)
-if [ $TIME_SINCE_LAST_CLEAN -gt "24" -o $CLEAN = "true" ]
+if [ $TIME_SINCE_LAST_CLEAN -gt "96" -o $CLEAN = "true" ]
 then
   echo "Cleaning!"
   touch .clean
