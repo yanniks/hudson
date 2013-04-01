@@ -17,6 +17,12 @@ then
   export HOME=$(awk -F: -v v="$USER" '{if ($1==v) print $6}' /etc/passwd)
 fi
 
+if [ -z "$WORKSPACE" ]
+then
+  echo WORKSPACE not specified
+  exit 1
+fi
+
 if [ -z "$CLEAN" ]
 then
   echo CLEAN not specified
@@ -104,7 +110,7 @@ fi
 
 rm -rf .repo/manifests*
 rm -f .repo/local_manifests/dyn-*.xml
-repo init -u $SYNC_PROTO://github.com/yanniks/android.git -b $CORE_BRANCH $MANIFEST
+repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
 check_result "repo init failed."
 
 # make sure ccache is in PATH
@@ -124,6 +130,9 @@ fi
 
 mkdir -p .repo/local_manifests
 rm -f .repo/local_manifest.xml
+
+echo Core Manifest:
+cat .repo/manifest.xml
 
 ## TEMPORARY: Some kernels are building _into_ the source tree and messing
 ## up posterior syncs due to changes
