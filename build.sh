@@ -49,7 +49,7 @@ fi
 
 if [ -z "$SYNC_PROTO" ]
 then
-  SYNC_PROTO=http
+  SYNC_PROTO=https
 fi
 
 # colorization fix in Jenkins
