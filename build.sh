@@ -17,12 +17,6 @@ then
   export HOME=$(awk -F: -v v="$USER" '{if ($1==v) print $6}' /etc/passwd)
 fi
 
-if [ -z "$WORKSPACE" ]
-then
-  echo WORKSPACE not specified
-  exit 1
-fi
-
 if [ -z "$CLEAN" ]
 then
   echo CLEAN not specified
