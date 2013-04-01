@@ -81,7 +81,7 @@ then
   chmod a+x ~/bin/repo
 fi
 
-git config --global user.name $(whoami)@$NODE_NAME
+git config --global user.name yanniks
 git config --global user.email kontakt@yanniks.de
 
 if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10.1" ]]; then 
