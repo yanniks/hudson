@@ -85,7 +85,7 @@ git config --global user.name yanniks
 git config --global user.email kontakt@yanniks.de
 
 if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10.1" ]]; then 
-   JENKINS_BUILD_DIR=jellybean
+   JENKINS_BUILD_DIR=.
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
@@ -127,22 +127,6 @@ if [ -f ~/.jenkins_profile ]
 then
   . ~/.jenkins_profile
 fi
-
-mkdir -p .repo/local_manifests
-rm -f .repo/local_manifest.xml
-
-rm -rf $WORKSPACE/build_env
-git clone git://github.com/CyanogenMod/cm_build_config.git $WORKSPACE/build_env
-check_result "Bootstrap failed"
-
-cp $WORKSPACE/build_env/$REPO_BRANCH.xml .repo/local_manifests/dyn-$REPO_BRANCH.xml
-
-echo Core Manifest:
-cat .repo/manifest.xml
-
-## TEMPORARY: Some kernels are building _into_ the source tree and messing
-## up posterior syncs due to changes
-rm -rf kernel/*
 
 echo Syncing...
 repo sync -d -c > /dev/null
