@@ -178,9 +178,6 @@ check_result "lunch failed."
 
 # include only the auto-generated locals
 TEMPSTASH=$(mktemp -d)
-mv .repo/local_manifests/* $TEMPSTASH
-mv $TEMPSTASH/roomservice.xml .repo/local_manifests/
-
 # save it
 repo manifest -o $WORKSPACE/archive/manifest.xml -r
 
