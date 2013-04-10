@@ -3,6 +3,7 @@
 # Absence of a period indicates Daily (the default)
 
 cm_a700-userdebug cm-10.1
+cm_acclaim-userdebug cm-10.1
 cm_anzu-userdebug jellybean W
 cm_aoba-userdebug ics W
 cm_c800-userdebug ics W
@@ -26,9 +27,9 @@ cm_encore-userdebug jellybean W
 cm_endeavoru-userdebug cm-10.1
 cm_epicmtd-userdebug cm-10.1
 cm_everest-userdebug cm-10.1
-cm_evita-userdebug cm-10.1
+#cm_evita-userdebug cm-10.1
 cm_fascinatemtd-userdebug cm-10.1
-cm_fireball-userdebug cm-10.1
+#cm_fireball-userdebug cm-10.1
 cm_galaxysbmtd-userdebug cm-10.1
 cm_galaxysmtd-userdebug cm-10.1
 cm_grouper-userdebug cm-10.1
@@ -45,7 +46,7 @@ cm_i9103-userdebug cm-10.1
 cm_i9300-userdebug cm-10.1
 cm_i9305-userdebug cm-10.1
 cm_iyokan-userdebug jellybean W
-cm_jewel-userdebug cm-10.1
+#cm_jewel-userdebug cm-10.1
 cm_l900-userdebug cm-10.1
 cm_maguro-userdebug cm-10.1
 cm_mako-userdebug cm-10.1
@@ -99,6 +100,8 @@ cm_steelhead-userdebug cm-10.1
 cm_stingray-userdebug cm-10.1
 cm_su640-userdebug cm-10.1
 cm_t0lte-userdebug cm-10.1
+cm_t0lteatt-userdebug cm-10.1
+cm_t0ltetmo-userdebug cm-10.1
 cm_t769-userdebug jellybean W
 cm_targa-userdebug cm-10.1
 cm_tenderloin-userdebug ics W
@@ -112,7 +115,7 @@ cm_toro-userdebug cm-10.1
 cm_umts_spyder-userdebug cm-10.1
 cm_urushi-userdebug jellybean W
 cm_vibrantmtd-userdebug cm-10.1
-cm_ville-userdebug cm-10.1
+#cm_ville-userdebug cm-10.1
 cm_vs920-userdebug cm-10.1
 cm_wingray-userdebug cm-10.1
 cm_zeus-userdebug ics W
