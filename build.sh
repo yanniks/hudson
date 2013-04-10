@@ -69,6 +69,7 @@ export CL_RST="\"\033[0m\""
 
 cd $WORKSPACE
 rm -rf archive
+rm jellybean/out/target/product/ace/system/build.prop
 mkdir -p archive
 export BUILD_NO=$BUILD_NUMBER
 unset BUILD_NUMBER
