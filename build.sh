@@ -110,7 +110,7 @@ fi
 
 rm -rf .repo/manifests*
 rm -f .repo/local_manifests/dyn-*.xml
-repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
+repo init -u $SYNC_PROTO://github.com/yanniks/android.git -b $CORE_BRANCH $MANIFEST
 check_result "repo init failed."
 
 # make sure ccache is in PATH
