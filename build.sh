@@ -52,6 +52,12 @@ then
   SYNC_PROTO=git
 fi
 
+if [ -z "$UPLOAD" ]
+then
+  echo UPLOAD not specified
+  exit 1
+fi
+
 # colorization fix in Jenkins
 export CL_RED="\"\033[31m\""
 export CL_GRN="\"\033[32m\""
@@ -310,4 +316,11 @@ then
     cmcp $WORKSPACE/archive/$f release/$MODVERSION/$f > /dev/null 2> /dev/null
     check_result "Failure archiving $f"
   done
+fi
+
+if [[ "$UPLOAD" =~ "true" || $REPO_BRANCH =~ "ja" ]]; then 
+	cd $WORKSPACE/jellybean/out/target/product/ace/
+	mv $WORKSPACE/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
+else
+   echo not uploading
 fi
