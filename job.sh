@@ -4,7 +4,6 @@ then
   export HOME=$(awk -F: -v v="$USER" '{if ($1==v) print $6}' /etc/passwd)
 fi
 
-cd /Volumes/android
 export WORKSPACE=$PWD
 
 if [ ! -d hudson ]
