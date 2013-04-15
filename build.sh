@@ -119,7 +119,7 @@ rm -rf .repo/manifests*
 rm -f .repo/local_manifests/*.xml
 repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
 mkdir .repo/local_manifests
-wget https://github.com/Myanniks/android/raw/cm-10.1/ace_manifest.xml -O .repo/local_manifests/ace_manifest.xml
+wget https://github.com/yanniks/android/raw/cm-10.1/ace_manifest.xml -O .repo/local_manifests/ace_manifest.xml
 check_result "repo init failed."
 
 # make sure ccache is in PATH
