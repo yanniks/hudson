@@ -147,7 +147,7 @@ cat .repo/manifest.xml
 ## up posterior syncs due to changes
 rm -rf kernel/*
 
-if [[ "$UPLOAD" =~ "false" || $REPO_BRANCH =~ "nein" ]]; then 
+if [[ "$SYNCREPO" =~ "false" || $REPO_BRANCH =~ "nein" ]]; then 
 	echo Skipped sync.
 else
 	echo Syncing...
