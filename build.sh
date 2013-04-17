@@ -147,10 +147,14 @@ cat .repo/manifest.xml
 ## up posterior syncs due to changes
 rm -rf kernel/*
 
-echo Syncing...
-repo sync -d -c > /dev/null
-check_result "repo sync failed."
-echo Sync complete.
+if [[ "$UPLOAD" =~ "false" || $REPO_BRANCH =~ "nein" ]]; then 
+	echo Skipped sync.
+else
+	echo Syncing...
+	repo sync -d -c > /dev/null
+	check_result "repo sync failed."
+	echo Sync complete.
+fi
 
 if [ -f $WORKSPACE/hudson/$REPO_BRANCH-setup.sh ]
 then
