@@ -323,8 +323,8 @@ then
 fi
 
 if [[ "$UPLOAD" =~ "true" || $REPO_BRANCH =~ "ja" ]]; then 
-	cd /home/yannik/jenkins/jobs/android/android/jellybean/out/target/product/ace/
-	mv /home/yannik/jenkins/jobs/android/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
+	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
+	mv /media/yannik/android/jenkins/workspace/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
 else
    echo not uploading
 fi
