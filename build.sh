@@ -147,7 +147,7 @@ cat .repo/manifest.xml
 ## up posterior syncs due to changes
 rm -rf kernel/*
 
-if [[ "$SYNCREPO" =~ "false" || $REPO_BRANCH =~ "nein" ]]; then 
+if [[ "$SYNCREPO" =~ "false" || $SYNCREPO =~ "nein" ]]; then 
 	echo Skipped sync.
 else
 	echo Syncing...
@@ -322,10 +322,12 @@ then
   done
 fi
 
-if [[ "$UPLOAD" =~ "true" || $REPO_BRANCH =~ "ja" ]]; then 
+if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then 
 	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
 	mv /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
         /home/yannik/cm-changes.sh
+if [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
+        rm $OUT/cm-*.zip*
 else
    echo not uploading
 fi
