@@ -325,6 +325,7 @@ fi
 if [[ "$UPLOAD" =~ "true" || $REPO_BRANCH =~ "ja" ]]; then 
 	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
 	mv /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
+        /home/yannik/cm-changes.sh
 else
    echo not uploading
 fi
