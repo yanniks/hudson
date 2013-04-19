@@ -326,7 +326,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
 	mv /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
         /home/yannik/cm-changes.sh
-if [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
+elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
 else
    echo not uploading
