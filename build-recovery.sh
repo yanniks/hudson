@@ -82,6 +82,8 @@ cd $REPO_BRANCH
 
 rm -rf .repo/manifests*
 rm -rf .repo/local_manifests/
+mkdir .repo/local_manifests
+curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/recovery/ace_manifest.xml
 repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $REPO_BRANCH
 check_result "repo init failed."
 

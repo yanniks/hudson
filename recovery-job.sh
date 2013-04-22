@@ -5,8 +5,8 @@ then
 fi
 
 cd $WORKSPACE
-mkdir -p ../android
-cd ../android
+mkdir -p ../android-recovery
+cd ../android-recovery
 export WORKSPACE=$PWD
 
 if [ ! -d hudson ]
