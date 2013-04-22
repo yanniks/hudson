@@ -116,6 +116,7 @@ else
 fi
 
 rm -rf .repo/manifests*
+rm -rf .repo/local_manifests
 rm -f .repo/local_manifests/*.xml
 repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
 mkdir .repo/local_manifests
