@@ -338,7 +338,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	      adb push /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-*.zip /sdcard/Download/cm-update.zip
 		  adb shell mkdir -p /cache/recovery
 		  adb shell echo 'boot-recovery' > /cache/recovery/command
-		  adb shell echo '--update_package=/sdcard/Download/cm-current.zip' >> /cache/recovery/command
+		  adb shell echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command
 		  adb reboot recovery
 	    else
 			echo skipped test installation!
