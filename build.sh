@@ -119,11 +119,11 @@ rm -rf .repo/manifests*
 rm -rf .repo/local_manifests
 rm -f .repo/local_manifests/*.xml
 repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
-if [[ "$USELOCAL" =~ "false" || $SYNCREPO =~ "nein" ]]; then 
-	echo using original files.
-else
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $SYNCREPO =~ "cm_ace-eng" ]]; then 
 	mkdir .repo/local_manifests
 	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/ace_manifest.xml
+else
+        echo not building for cm_ace.
 fi
 check_result "repo init failed."
 
