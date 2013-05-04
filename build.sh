@@ -119,7 +119,7 @@ rm -rf .repo/manifests*
 rm -rf .repo/local_manifests
 rm -f .repo/local_manifests/*.xml
 repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
-if [[ "$LUNCH" =~ "cm_ace-userdebug" || $SYNCREPO =~ "cm_ace-eng" ]]; then 
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then 
 	mkdir .repo/local_manifests
 	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/ace_manifest.xml
 else
@@ -333,6 +333,16 @@ then
 fi
 
 if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then 
+	    if [ "$APPLYUPDATE" = "true" ]
+	    then
+	      adb push /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-*.zip /sdcard/Download/cm-update.zip
+		  adb shell mkdir -p /cache/recovery
+		  adb shell echo 'boot-recovery' > /cache/recovery/command
+		  adb shell echo '--update_package=/sdcard/Download/cm-current.zip' >> /cache/recovery/command
+		  adb reboot recovery
+	    else
+			echo skipped test installation!
+	    fi
 	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
 	mv /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
         /home/yannik/cm-changes.sh
@@ -341,3 +351,4 @@ elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
 else
    echo not uploading
 fi
+
