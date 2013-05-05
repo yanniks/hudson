@@ -350,6 +350,17 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
 else
+            if [ "$APPLYUPDATE" = "true" ]
+            then
+                  adb shell rm /sdcard/Download/cm-update.zip
+                  adb push /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-*.zip /sdcard/Download/cm-update.zip
+                  adb shell su -c "mkdir -p /cache/recovery"
+                  adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
+                  adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
+                  adb reboot recovery
+            else
+                        echo skipped test installation!
+            fi
    echo not uploading
 fi
 
