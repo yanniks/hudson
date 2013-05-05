@@ -69,7 +69,6 @@ export CL_RST="\"\033[0m\""
 
 cd $WORKSPACE
 rm -rf archive
-rm jellybean/out/target/product/ace/system/build.prop
 mkdir -p archive
 export BUILD_NO=$BUILD_NUMBER
 unset BUILD_NUMBER
@@ -91,12 +90,21 @@ fi
 git config --global user.name $(whoami)@$NODE_NAME
 git config --global user.email jenkins@cyanogenmod.com
 
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
+   DEVICE=ace
+elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
+   DEVICE=mako
+else
+   JENKINS_BUILD_DIR=$REPO_BRANCH
+fi
+
 if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10" ]]; then 
    JENKINS_BUILD_DIR=jellybean
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
 
+rm $JENKINS_BUILD_DIR/out/target/product/$DEVICE/system/build.prop
 mkdir -p $JENKINS_BUILD_DIR
 cd $JENKINS_BUILD_DIR
 
@@ -122,8 +130,11 @@ repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $M
 if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then 
 	mkdir .repo/local_manifests
 	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/ace_manifest.xml
+elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
+        mkdir .repo/local_manifests
+        curl -s -o .repo/local_manifests/mako_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/mako_manifest.xml
 else
-        echo not building for cm_ace.
+        echo not building for cm_ace or cm_mako.
 fi
 check_result "repo init failed."
 
@@ -347,7 +358,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	    if [ "$APPLYUPDATE" = "true" ]
 	    then
                   adb shell rm /sdcard/Download/cm-update.zip
-	          adb push /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-*.zip /sdcard/Download/cm-update.zip
+	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-*.zip /sdcard/Download/cm-update.zip
 		  adb shell su -c "mkdir -p /cache/recovery"
 		  adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
 		  adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
@@ -355,8 +366,8 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	    else
 			echo skipped test installation!
 	    fi
-	cd /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/
-	mv /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-* /home/yannik/Dropbox/cm-ace-buildbot
+	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
+	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-* /home/yannik/Dropbox/cm-$DEVICE-buildbot
         /home/yannik/cm-changes.sh
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
@@ -364,7 +375,7 @@ else
             if [ "$APPLYUPDATE" = "true" ]
             then
                   adb shell rm /sdcard/Download/cm-update.zip
-                  adb push /media/yannik/android/jenkins/workspace/android/jellybean/out/target/product/ace/cm-*.zip /sdcard/Download/cm-update.zip
+                  adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-*.zip /sdcard/Download/cm-update.zip
                   adb shell su -c "mkdir -p /cache/recovery"
                   adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
                   adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
