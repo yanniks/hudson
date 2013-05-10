@@ -194,6 +194,12 @@ then
 fi
 
 . build/envsetup.sh
+# Workaround for failing translation checks in common hardware repositories
+if [ ! -z "$GERRIT_XLATION_LINT" ]
+then
+    LUNCH=$(echo $LUNCH@$DEVICEVENDOR | sed -f $WORKSPACE/hudson/shared-repo.map)
+fi
+
 lunch $LUNCH
 check_result "lunch failed."
 
