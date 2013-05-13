@@ -104,6 +104,7 @@ else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
 
+export DEVICE=$DEVICE
 rm -f $JENKINS_BUILD_DIR/out/target/product/$DEVICE/system/build.prop
 mkdir -p $JENKINS_BUILD_DIR
 cd $JENKINS_BUILD_DIR
