@@ -374,7 +374,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 			echo skipped test installation!
 	    fi
 	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
-	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-* /home/yannik/Dropbox/cm-$DEVICE-buildbot
+	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-* $UPLOADPATH/cm-$DEVICE-buildbot
         /home/yannik/cm-changes.sh
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
