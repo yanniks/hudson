@@ -281,7 +281,7 @@ then
   if [ $CHANGE_COUNT -eq "0" ]
   then
     echo "Zero changes since last build, aborting"
-    exit 1
+    exit 0
   fi
 fi
 
