@@ -92,10 +92,13 @@ git config --global user.email jenkins@cyanogenmod.com
 
 if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
    DEVICE=ace
+   export GITHUBUSER=yanniks
 elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
    DEVICE=mako
+   export GITHUBUSER=CyanogenMod
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
+   export GITHUBUSER=CyanogenMod
 fi
 
 if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10" ]]; then 
