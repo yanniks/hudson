@@ -135,8 +135,7 @@ if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
 	mkdir .repo/local_manifests
 	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/ace_manifest.xml
 elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
-        mkdir .repo/local_manifests
-        curl -s -o .repo/local_manifests/mako_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/mako_manifest.xml
+        echo building for cm_mako.
 else
         echo not building for cm_ace or cm_mako.
 fi
