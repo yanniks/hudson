@@ -377,9 +377,10 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	    fi
 	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
 	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-* $UPLOADPATH/cm-$DEVICE-buildbot
-            elif [ "$RELEASE_TYPE" = "CM_RELEASE" ]
+            if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   /home/yannik/cm-changes.sh
+            else      
             fi
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
