@@ -115,6 +115,7 @@ fi
 
 if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10" ]]; then 
    JENKINS_BUILD_DIR=jellybean
+   export REPOLOCAL=cm-10.1
 elif [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; then
    JENKINS_BUILD_DIR=paranoidandroid
    export REPOLOCAL=jellybean-legacy
