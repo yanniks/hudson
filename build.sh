@@ -90,6 +90,18 @@ fi
 git config --global user.name $(whoami)@$NODE_NAME
 git config --global user.email jenkins@cyanogenmod.com
 
+if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
+   DEVICE=ace
+   export ROMPROJECT=ParanoidAndroid
+   export MANIFESTNAME=manifest
+elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
+   export ROMPROJECT=CyanogenMod
+   export MANIFESTNAME=android
+else
+   export ROMPROJECT=CyanogenMod
+   export MANIFESTNAME=android
+fi
+
 if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
    DEVICE=ace
    export GITHUBUSER=yanniks
@@ -101,8 +113,11 @@ else
    export GITHUBUSER=CyanogenMod
 fi
 
-if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "cm-10" ]]; then 
+if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10" ]]; then 
    JENKINS_BUILD_DIR=jellybean
+elif [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; then
+   JENKINS_BUILD_DIR=paranoidandroid
+   export REPOLOCAL=jellybean-legacy
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
@@ -130,10 +145,10 @@ fi
 rm -rf .repo/manifests*
 rm -rf .repo/local_manifests
 rm -f .repo/local_manifests/*.xml
-repo init -u $SYNC_PROTO://github.com/CyanogenMod/android.git -b $CORE_BRANCH $MANIFEST
+repo init -u $SYNC_PROTO://github.com/$ROMPROJECT/$MANIFESTNAME.git -b $CORE_BRANCH $MANIFEST
 if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then 
 	mkdir .repo/local_manifests
-	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/cm-10.1/ace_manifest.xml
+	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/$REPOLOCAL/ace_manifest.xml
 elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
         echo building for cm_mako.
 else
