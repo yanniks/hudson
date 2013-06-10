@@ -102,10 +102,10 @@ else
    export MANIFESTNAME=android
 fi
 
-if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" ]]; then
    DEVICE=ace
    export GITHUBUSER=yanniks
-elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
+elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "pa_mako-userdebug" ]]; then
    DEVICE=mako
    export GITHUBUSER=CyanogenMod
 else
@@ -146,10 +146,10 @@ rm -rf .repo/manifests*
 rm -rf .repo/local_manifests
 rm -f .repo/local_manifests/*.xml
 repo init -u $SYNC_PROTO://github.com/$ROMPROJECT/$MANIFESTNAME.git -b $CORE_BRANCH $MANIFEST
-if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then 
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" ]]; then 
 	mkdir .repo/local_manifests
 	curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/$REPOLOCAL/ace_manifest.xml
-elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
+elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "pa_ace-userdebug" ]]; then
         echo building for cm_mako.
 else
         echo not building for cm_ace or cm_mako.
