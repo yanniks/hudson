@@ -396,7 +396,8 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   /home/yannik/cm-changes.sh
-            else      
+            else   
+                  echo not a release build!   
             fi
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
         rm $OUT/cm-*.zip*
