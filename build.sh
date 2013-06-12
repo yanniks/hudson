@@ -383,7 +383,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	    if [ "$APPLYUPDATE" = "true" ]
 	    then
                   adb shell rm /sdcard/Download/cm-update.zip
-	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-*.zip /sdcard/Download/cm-update.zip
+	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/cm-update.zip
 		  adb shell su -c "mkdir -p /cache/recovery"
 		  adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
 		  adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
