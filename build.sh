@@ -392,7 +392,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 			echo skipped test installation!
 	    fi
 	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
-	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-* $UPLOADPATH/cm-$DEVICE-buildbot
+	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/cm-$DEVICE-buildbot
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   /home/yannik/cm-changes.sh
