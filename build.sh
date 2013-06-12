@@ -416,3 +416,11 @@ else
    echo not uploading
 fi
 
+            if [ "$DELETEOUT" = "true" ]
+            then
+                  echo deleting build directory...
+                  rm -rf $JENKINS_BUILD_DIR/out
+                  echo done!
+            else
+                        echo not deleting build directory.
+            fi
