@@ -33,10 +33,13 @@ if [ -z "$REPO_BRANCH" ]
 then
   if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    export REPO_BRANCH=jellybean-legacy
+   export FOLDERPREFIX=pa
   elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export REPO_BRANCH=cm-10.1
+   export FOLDERPREFIX=cm
   else
    export REPO_BRANCH=cm-10.1
+   export FOLDERPREFIX=cm
 fi
 fi
 
@@ -397,7 +400,7 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 			echo skipped test installation!
 	    fi
 	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
-	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/cm-$DEVICE-buildbot
+	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   /home/yannik/cm-changes.sh
