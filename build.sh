@@ -238,7 +238,7 @@ repo manifest -o $WORKSPACE/archive/manifest.xml -r
 mv $TEMPSTASH/* .repo/local_manifests/ 2>/dev/null
 rmdir $TEMPSTASH
 
-rm -f $OUT/cm-*.zip*
+rm -f $OUT/*.zip*
 
 UNAME=$(uname)
 
@@ -330,7 +330,7 @@ echo "$REPO_BRANCH-$CORE_BRANCH$RELEASE_MANIFEST" > .last_branch
 time mka bacon
 check_result "Build failed."
 
-for f in $(ls $OUT/cm-*.zip*)
+for f in $(ls $OUT/*.zip*)
 do
   ln $f $WORKSPACE/archive/$(basename $f)
 done
@@ -344,7 +344,7 @@ then
 fi
 
 # archive the build.prop as well
-ZIP=$(ls $WORKSPACE/archive/cm-*.zip)
+ZIP=$(ls $WORKSPACE/archive/*.zip)
 unzip -p $ZIP system/build.prop > $WORKSPACE/archive/build.prop
 
 # CORE: save manifest used for build (saving revisions as current HEAD)
@@ -383,15 +383,15 @@ then
     check_result "Failure archiving $f"
   done
 fi
-
+rm /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*ota-eng*.zip
 if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then 
 	    if [ "$APPLYUPDATE" = "true" ]
 	    then
-                  adb shell rm /sdcard/Download/cm-update.zip
-	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/cm-update.zip
+                  adb shell rm /sdcard/Download/rom-update.zip
+	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
 		  adb shell su -c "mkdir -p /cache/recovery"
 		  adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
-		  adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
+		  adb shell su -c "echo '--update_package=/sdcard/Download/rom-update.zip' >> /cache/recovery/command"
 		  adb reboot recovery
 	    else
 			echo skipped test installation!
@@ -405,15 +405,15 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
                   echo not a release build!   
             fi
 elif [[ "$UPLOAD" =~ "testcompile" || $UPLOAD =~ "sofortloeschen" ]]; then
-        rm $OUT/cm-*.zip*
+        rm $OUT/*.zip*
 else
             if [ "$APPLYUPDATE" = "true" ]
             then
-                  adb shell rm /sdcard/Download/cm-update.zip
-                  adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/cm-*.zip /sdcard/Download/cm-update.zip
+                  adb shell rm /sdcard/Download/rom-update.zip
+                  adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
                   adb shell su -c "mkdir -p /cache/recovery"
                   adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
-                  adb shell su -c "echo '--update_package=/sdcard/Download/cm-update.zip' >> /cache/recovery/command"
+                  adb shell su -c "echo '--update_package=/sdcard/Download/rom-update.zip' >> /cache/recovery/command"
                   adb reboot recovery
             else
                         echo skipped test installation!
