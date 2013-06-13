@@ -31,8 +31,13 @@ fi
 
 if [ -z "$REPO_BRANCH" ]
 then
-  echo REPO_BRANCH not specified
-  exit 1
+  if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
+   export REPO_BRANCH=jellybean-legacy
+  elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
+   export REPO_BRANCH=cm-10.1
+  else
+   export REPO_BRANCH=cm-10.1
+fi
 fi
 
 if [ -z "$LUNCH" ]
