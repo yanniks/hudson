@@ -221,6 +221,15 @@ then
   CLEAN="true"
 fi
 
+if [ "$ROM" = "ParanoidAndroid" ]
+then
+  echo getting PA device tree...
+  ./vendor/pa/tools/getdevicetree.py $DEVICE
+  echo done!
+else
+  echo building CyanogenMod - no need to pull any other files!
+fi
+
 . build/envsetup.sh
 # Workaround for failing translation checks in common hardware repositories
 if [ ! -z "$GERRIT_XLATION_LINT" ]
