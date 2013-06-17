@@ -41,6 +41,13 @@ then
    export REPO_BRANCH=cm-10.1
    export FOLDERPREFIX=cm
 fi
+else
+  if [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; then
+   export FOLDERPREFIX=pa
+  elif [[ "$REPO_BRANCH" =~ "cm-10" || $REPO_BRANCH =~ "cm-10.1" ]]; then
+   export FOLDERPREFIX=cm
+  else
+   echo notification: upload not supported in combination with branch $REPO_BRANCH
 fi
 
 if [ -z "$LUNCH" ]
