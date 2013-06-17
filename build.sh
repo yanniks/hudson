@@ -48,6 +48,7 @@ else
    export FOLDERPREFIX=cm
   else
    echo notification: upload not supported in combination with branch $REPO_BRANCH
+  fi
 fi
 
 if [ -z "$LUNCH" ]
