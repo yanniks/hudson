@@ -108,7 +108,7 @@ git config --global user.email jenkins@cyanogenmod.com
 
 if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    DEVICE=ace
-   export ROMPROJECT=yanniks
+   export ROMPROJECT=ParanoidAndroid
    export MANIFESTNAME=manifest
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
