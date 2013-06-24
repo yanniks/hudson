@@ -31,7 +31,10 @@ fi
 
 if [ -z "$REPO_BRANCH" ]
 then
-  if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
+  if [[ "$ROM" =~ "liquid" || $ROM =~ "LiquidSmooth" ]]; then
+   export REPO_BRANCH=jb2
+   export FOLDERPREFIX=liquid
+  elif [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    export REPO_BRANCH=jellybean-legacy
    export FOLDERPREFIX=pa
   elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
@@ -110,6 +113,9 @@ if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    DEVICE=ace
    export ROMPROJECT=ParanoidAndroid
    export MANIFESTNAME=manifest
+elif [[ "$ROM" =~ "liquid" || $ROM =~ "LiquidSmooth" ]]; then
+   export ROMPROJECT=LiquidSmooth
+   export MANIFESTNAME=android
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
    export MANIFESTNAME=android
@@ -135,6 +141,9 @@ if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10" ]]; then
 elif [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; then
    JENKINS_BUILD_DIR=paranoidandroid
    export REPOLOCAL=jellybean-legacy
+elif [[ "$REPO_BRANCH" =~ "jb2" || $REPO_BRANCH =~ "jb2" ]];$
+   JENKINS_BUILD_DIR=liquidsmooth
+   export REPOLOCAL=jb2
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
