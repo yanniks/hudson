@@ -124,7 +124,7 @@ else
    export MANIFESTNAME=android
 fi
 
-if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" ]]; then
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" || $LUNCH =~ "liquid_ace-userdebug" ]]; then
    DEVICE=ace
    export GITHUBUSER=yanniks
 elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "pa_mako-userdebug" ]]; then
