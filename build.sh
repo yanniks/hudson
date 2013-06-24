@@ -120,7 +120,7 @@ elif [[ "$ROM" =~ "liquid" || $ROM =~ "LiquidSmooth" ]]; then
    export ROMPROJECT=LiquidSmooth
    export MANIFESTNAME=android
 elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBean" ]]; then
-   export ROMPROJECT=SlimBean
+   export ROMPROJECT=SlimRoms
    export MANIFESTNAME=platform_manifest
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
