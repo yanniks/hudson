@@ -37,7 +37,7 @@ then
   elif [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    export REPO_BRANCH=jellybean-legacy
    export FOLDERPREFIX=pa
-  elif [[ "$ROM" =~ "sb" || $ROM =~ "SlimBeam" ]]; then
+  elif [[ "$ROM" =~ "sb" || $ROM =~ "SlimBean" ]]; then
    export REPO_BRANCH=jb4.2
    export FOLDERPREFIX=sb
   elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
@@ -119,8 +119,8 @@ if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
 elif [[ "$ROM" =~ "liquid" || $ROM =~ "LiquidSmooth" ]]; then
    export ROMPROJECT=LiquidSmooth
    export MANIFESTNAME=android
-elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBeam" ]]; then
-   export ROMPROJECT=SlimBeam
+elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBean" ]]; then
+   export ROMPROJECT=SlimBean
    export MANIFESTNAME=platform_manifest
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
@@ -151,7 +151,7 @@ elif [[ "$REPO_BRANCH" =~ "jb2" || $REPO_BRANCH =~ "jb2" ]]; then
    JENKINS_BUILD_DIR=liquidsmooth
    export REPOLOCAL=jb2
 elif [[ "$REPO_BRANCH" =~ "jb4.2" || $REPO_BRANCH =~ "jb4.2" ]]; then
-   JENKINS_BUILD_DIR=slimbeam
+   JENKINS_BUILD_DIR=slimbean
    export REPOLOCAL=jb4.2
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
