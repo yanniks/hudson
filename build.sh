@@ -363,7 +363,13 @@ fi
 
 echo "$REPO_BRANCH-$CORE_BRANCH$RELEASE_MANIFEST" > .last_branch
 
-time mka bacon
+    if [ "$ROM" = "LiquidSmooth" ]
+    then 
+         time make
+    else   
+         time mka bacon
+    fi
+
 check_result "Build failed."
 
 for f in $(ls $OUT/*.zip*)
