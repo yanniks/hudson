@@ -37,6 +37,9 @@ then
   elif [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    export REPO_BRANCH=jellybean-legacy
    export FOLDERPREFIX=pa
+  elif [[ "$ROM" =~ "sb" || $ROM =~ "SlimBeam" ]]; then
+   export REPO_BRANCH=jb4.2
+   export FOLDERPREFIX=sb
   elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export REPO_BRANCH=cm-10.1
    export FOLDERPREFIX=cm
@@ -116,6 +119,9 @@ if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
 elif [[ "$ROM" =~ "liquid" || $ROM =~ "LiquidSmooth" ]]; then
    export ROMPROJECT=LiquidSmooth
    export MANIFESTNAME=android
+elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBeam" ]]; then
+   export ROMPROJECT=SlimBeam
+   export MANIFESTNAME=platform_manifest
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
    export MANIFESTNAME=android
@@ -124,7 +130,7 @@ else
    export MANIFESTNAME=android
 fi
 
-if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" || $LUNCH =~ "liquid_ace-userdebug" ]]; then
+if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "pa_ace-userdebug" || $LUNCH =~ "liquid_ace-userdebug" || $LUNCH =~ "slim_ace-userdebug" ]]; then
    DEVICE=ace
    export GITHUBUSER=yanniks
 elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "pa_mako-userdebug" ]]; then
@@ -144,6 +150,9 @@ elif [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; 
 elif [[ "$REPO_BRANCH" =~ "jb2" || $REPO_BRANCH =~ "jb2" ]]; then
    JENKINS_BUILD_DIR=liquidsmooth
    export REPOLOCAL=jb2
+elif [[ "$REPO_BRANCH" =~ "jb4.2" || $REPO_BRANCH =~ "jb4.2" ]]; then
+   JENKINS_BUILD_DIR=slimbeam
+   export REPOLOCAL=jb4.2
 else
    JENKINS_BUILD_DIR=$REPO_BRANCH
 fi
