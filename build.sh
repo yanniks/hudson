@@ -159,6 +159,8 @@ fi
 
 export DEVICE=$DEVICE
 rm -f $JENKINS_BUILD_DIR/out/target/product/$DEVICE/system/build.prop
+export JENKINS_BUILD_DIR
+
 mkdir -p $JENKINS_BUILD_DIR
 cd $JENKINS_BUILD_DIR
 
@@ -216,6 +218,20 @@ fi
 mkdir -p .repo/local_manifests
 rm -f .repo/local_manifest.xml
 
+<<<<<<< HEAD
+=======
+rm -rf $WORKSPACE/build_env
+git clone https://github.com/CyanogenMod/cm_build_config.git $WORKSPACE/build_env
+check_result "Bootstrap failed"
+
+if [ -f $WORKSPACE/build_env/bootstrap.sh ]
+then
+  bash $WORKSPACE/build_env/bootstrap.sh
+fi
+
+cp $WORKSPACE/build_env/$REPO_BRANCH.xml .repo/local_manifests/dyn-$REPO_BRANCH.xml
+
+>>>>>>> e669fe70d36f4c15b0c1f8ad456f5c3bbd6feca7
 echo Core Manifest:
 cat .repo/manifest.xml
 
@@ -223,6 +239,7 @@ cat .repo/manifest.xml
 ## up posterior syncs due to changes
 rm -rf kernel/*
 
+<<<<<<< HEAD
 if [[ "$SYNCREPO" =~ "false" || $SYNCREPO =~ "nein" ]]; then 
 	echo Skipped sync.
 else
@@ -231,6 +248,20 @@ else
 	check_result "repo sync failed."
 	echo Sync complete.
 fi
+=======
+if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
+then
+  if [ -f  $WORKSPACE/build_env/$REPO_BRANCH-release.xml ]
+  then
+    cp -f $WORKSPACE/build_env/$REPO_BRANCH-release.xml .repo/local_manifests/dyn-$REPO_BRANCH.xml
+  fi
+fi
+
+echo Syncing...
+repo sync -d -c > /dev/null
+check_result "repo sync failed."
+echo Sync complete.
+>>>>>>> e669fe70d36f4c15b0c1f8ad456f5c3bbd6feca7
 
 if [ -f $WORKSPACE/hudson/$REPO_BRANCH-setup.sh ]
 then
@@ -404,6 +435,10 @@ rmdir $TEMPSTASH
 
 # chmod the files in case UMASK blocks permissions
 chmod -R ugo+r $WORKSPACE/archive
+
+# Add build to GetCM
+echo "Adding build to GetCM"
+python /opt/jenkins-utils/add_build.py --file `ls $WORKSPACE/archive/*.zip` --buildprop $WORKSPACE/archive/build.prop --buildnumber $BUILD_NO --releasetype $RELEASE_TYPE
 
 CMCP=$(which cmcp)
 if [ ! -z "$CMCP" -a ! -z "$CM_RELEASE" ]
