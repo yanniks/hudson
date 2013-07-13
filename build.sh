@@ -225,9 +225,6 @@ then
   bash $WORKSPACE/build_env/bootstrap.sh
 fi
 
-cp $WORKSPACE/build_env/$REPO_BRANCH.xml .repo/local_manifests/dyn-$REPO_BRANCH.xml
-
->>>>>>> e669fe70d36f4c15b0c1f8ad456f5c3bbd6feca7
 echo Core Manifest:
 cat .repo/manifest.xml
 
@@ -243,7 +240,7 @@ else
 	check_result "repo sync failed."
 	echo Sync complete.
 fi
-if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
+if [ "$RELEASE_TYPE" = "CM_RELEASE-orig" ]
 then
   if [ -f  $WORKSPACE/build_env/$REPO_BRANCH-release.xml ]
   then
@@ -255,7 +252,6 @@ echo Syncing...
 repo sync -d -c > /dev/null
 check_result "repo sync failed."
 echo Sync complete.
->>>>>>> e669fe70d36f4c15b0c1f8ad456f5c3bbd6feca7
 
 if [ -f $WORKSPACE/hudson/$REPO_BRANCH-setup.sh ]
 then
@@ -429,10 +425,6 @@ rmdir $TEMPSTASH
 
 # chmod the files in case UMASK blocks permissions
 chmod -R ugo+r $WORKSPACE/archive
-
-# Add build to GetCM
-echo "Adding build to GetCM"
-python /opt/jenkins-utils/add_build.py --file `ls $WORKSPACE/archive/*.zip` --buildprop $WORKSPACE/archive/build.prop --buildnumber $BUILD_NO --releasetype $RELEASE_TYPE
 
 CMCP=$(which cmcp)
 if [ ! -z "$CMCP" -a ! -z "$CM_RELEASE" ]
