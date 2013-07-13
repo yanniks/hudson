@@ -1,5 +1,5 @@
 # Accessing the Build Server
-http://yauniks.homeunix.net:8080/jenkins/
+http://yauniks.supersu.com:8080/
 
 # Authenticating to the Build Server
 You must login to the build server with GitHub once. After that contact me and send me and send me your GitHub username.
