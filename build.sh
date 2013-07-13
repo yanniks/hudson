@@ -240,7 +240,7 @@ else
 	check_result "repo sync failed."
 	echo Sync complete.
 fi
-if [ "$RELEASE_TYPE" = "CM_RELEASE-orig" ]
+if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
 then
   if [ -f  $WORKSPACE/build_env/$REPO_BRANCH-release.xml ]
   then
