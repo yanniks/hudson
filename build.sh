@@ -218,8 +218,6 @@ fi
 mkdir -p .repo/local_manifests
 rm -f .repo/local_manifest.xml
 
-check_result "Bootstrap failed"
-
 if [ -f $WORKSPACE/build_env/bootstrap.sh ]
 then
   bash $WORKSPACE/build_env/bootstrap.sh
