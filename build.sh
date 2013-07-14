@@ -101,6 +101,12 @@ export USE_CCACHE=1
 export CCACHE_NLEVELS=4
 export BUILD_WITH_COLORS=0
 
+platform=`uname -s`
+if [ "$platform" = "Darwin" ]
+then
+  export BUILD_MAC_SDK_EXPERIMENTAL=1
+fi
+
 REPO=$(which repo)
 if [ -z "$REPO" ]
 then
