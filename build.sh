@@ -464,7 +464,12 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
-                  /home/yannik/cm-changes.sh
+                  if [ "$platform" = "Darwin" ]
+                  then
+                    /Users/yannik/cm-changes.sh
+                  else
+                    /home/yannik/cm-changes.sh
+                  fi
             else   
                   echo not a release build!   
             fi
