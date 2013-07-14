@@ -115,9 +115,6 @@ then
   chmod a+x ~/bin/repo
 fi
 
-git config --global user.name $(whoami)@$NODE_NAME
-git config --global user.email jenkins@cyanogenmod.com
-
 if [[ "$ROM" =~ "pa" || $ROM =~ "ParanoidAndroid" ]]; then
    DEVICE=ace
    export ROMPROJECT=ParanoidAndroid
