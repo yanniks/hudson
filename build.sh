@@ -447,12 +447,12 @@ then
     check_result "Failure archiving $f"
   done
 fi
-rm /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*ota-eng*.zip
+rm /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*ota-eng*.zip
 if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then 
 	    if [ "$APPLYUPDATE" = "true" ]
 	    then
                   adb shell rm /sdcard/Download/rom-update.zip
-	          adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
+	          adb push /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
 		  adb shell su -c "mkdir -p /cache/recovery"
 		  adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
 		  adb shell su -c "echo '--update_package=/sdcard/Download/rom-update.zip' >> /cache/recovery/command"
@@ -460,8 +460,8 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 	    else
 			echo skipped test installation!
 	    fi
-	cd /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
-	mv /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
+	cd /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
+	mv /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   if [ "$platform" = "Darwin" ]
@@ -479,7 +479,7 @@ else
             if [ "$APPLYUPDATE" = "true" ]
             then
                   adb shell rm /sdcard/Download/rom-update.zip
-                  adb push /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
+                  adb push /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*.zip /sdcard/Download/rom-update.zip
                   adb shell su -c "mkdir -p /cache/recovery"
                   adb shell su -c "echo 'boot-recovery' > /cache/recovery/command"
                   adb shell su -c "echo '--update_package=/sdcard/Download/rom-update.zip' >> /cache/recovery/command"
@@ -493,7 +493,7 @@ fi
             if [ "$DELETEOUT" = "true" ]
             then
                   echo deleting build directory...
-                  rm -rf /media/yannik/android/jenkins/workspace/android/$JENKINS_BUILD_DIR/out
+                  rm -rf /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out
                   echo done!
             else
                         echo not deleting build directory.
