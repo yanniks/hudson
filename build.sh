@@ -128,7 +128,7 @@ elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBean" ]]; then
 elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
    export MANIFESTNAME=android
-elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod-4.3" ]]; then
+elif [[ "$ROM" =~ "cm" || $ROM =~ "cmworkaround" ]]; then
    export ROMPROJECT=yanniks
    export MANIFESTNAME=android
 else
