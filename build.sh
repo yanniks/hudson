@@ -147,7 +147,7 @@ fi
 if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10" ]]; then 
    JENKINS_BUILD_DIR=jellybean
    export REPOLOCAL=cm-10.1
-if [[ "$REPO_BRANCH" =~ "cm-10.2" || $REPO_BRANCH =~ "cm-10.2" ]]; then
+elif [[ "$REPO_BRANCH" =~ "cm-10.2" || $REPO_BRANCH =~ "cm-10.2" ]]; then
    JENKINS_BUILD_DIR=jellybean-4.3
    export REPOLOCAL=cm-10.2
 elif [[ "$REPO_BRANCH" =~ "jellybean" || $REPO_BRANCH =~ "jellybean-legacy" ]]; then
