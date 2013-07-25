@@ -144,7 +144,7 @@ else
    export GITHUBUSER=CyanogenMod
 fi
 
-if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10" ]]; then 
+if [[ "$REPO_BRANCH" =~ "cm-10.1" || $REPO_BRANCH =~ "cm-10.1" ]]; then 
    JENKINS_BUILD_DIR=jellybean
    export REPOLOCAL=cm-10.1
 elif [[ "$REPO_BRANCH" =~ "cm-10.2" || $REPO_BRANCH =~ "cm-10.2" ]]; then
