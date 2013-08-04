@@ -43,9 +43,6 @@ then
   elif [[ "$ROM" =~ "cm" || $ROM =~ "CyanogenMod" ]]; then
    export REPO_BRANCH=cm-10.1
    export FOLDERPREFIX=cm
-  elif [[ "$ROM" =~ "cmworkaround" || $ROM =~ "cmworkaround" ]]; then
-   export REPO_BRANCH=cm-10.2
-   export FOLDERPREFIX=cm
   else
    export REPO_BRANCH=cm-10.1
    export FOLDERPREFIX=cm
@@ -130,9 +127,6 @@ elif [[ "$ROM" =~ "slim" || $ROM =~ "SlimBean" ]]; then
    export MANIFESTNAME=platform_manifest
 elif [[ "$ROM" =~ "CyanogenMod" || $ROM =~ "CyanogenMod" ]]; then
    export ROMPROJECT=CyanogenMod
-   export MANIFESTNAME=android
-elif [[ "$ROM" =~ "cmworkaround" || $ROM =~ "cmworkaround" ]]; then
-   export ROMPROJECT=yanniks
    export MANIFESTNAME=android
 else
    export ROMPROJECT=CyanogenMod
