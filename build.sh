@@ -255,11 +255,6 @@ then
   fi
 fi
 
-echo Syncing...
-repo sync -d -c > /dev/null
-check_result "repo sync failed."
-echo Sync complete.
-
 if [ -f $WORKSPACE/hudson/$REPO_BRANCH-setup.sh ]
 then
   $WORKSPACE/hudson/$REPO_BRANCH-setup.sh
