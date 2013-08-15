@@ -474,7 +474,12 @@ if [[ "$UPLOAD" =~ "true" || $UPLOAD =~ "ja" ]]; then
 			echo skipped test installation!
 	    fi
 	cd /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/
-	mv /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
+        if [ "$REPO_BRANCH" = "cm-10.2" ]
+            then
+                  mv /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot-4.3
+            else
+                  mv /home/yannik/workspace/android/$JENKINS_BUILD_DIR/out/target/product/$DEVICE/*zip* $UPLOADPATH/$FOLDERPREFIX-$DEVICE-buildbot
+            fi
             if [ "$RELEASE_TYPE" = "CM_RELEASE" ]
             then 
                   if [ "$platform" = "Darwin" ]
