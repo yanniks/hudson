@@ -394,7 +394,6 @@ echo "$REPO_BRANCH-$CORE_BRANCH$RELEASE_MANIFEST" > .last_branch
                 cd out/target/product/ace/obj/KERNEL_OBJ
                 curl -O http://yauniks.dynvpn.de/usr.zip
                 unzip usr.zip
-                cd ../../../../../..
         fi
     fi
 
