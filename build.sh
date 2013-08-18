@@ -198,6 +198,9 @@ if [[ "$LUNCH" =~ "cm_ace-userdebug" || $LUNCH =~ "cm_ace-eng" ]]; then
 elif [[ "$LUNCH" =~ "pa_ace-userdebug" || $LUNCH =~ "pa_ace-eng" ]]; then
         mkdir .repo/local_manifests
         curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/pa-ace/android/$REPOLOCAL/ace_manifest.xml
+elif [[ "$LUNCH" =~ "cm_mako-userdebug" || $LUNCH =~ "cm_mako-eng" ]]; then
+        mkdir .repo/local_manifests
+        curl -s -o .repo/local_manifests/roomservice.xml https://raw.github.com/yanniks/android/$REPOLOCAL/mako_manifest.xml
 elif [[ "$LUNCH" =~ "slim_ace-userdebug" || $LUNCH =~ "slim_ace-eng" ]]; then
         mkdir .repo/local_manifests
         curl -s -o .repo/local_manifests/ace_manifest.xml https://raw.github.com/yanniks/android/$REPOLOCAL/ace_manifest.xml
