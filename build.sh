@@ -309,6 +309,8 @@ then
   export RELEASE_TYPE=CM_EXPERIMENTAL
 fi
 
+export SIGN_BUILD=false
+
 if [ "$RELEASE_TYPE" = "CM_NIGHTLY" ]
 then
   if [ "$REPO_BRANCH" = "gingerbread" ]
@@ -326,6 +328,17 @@ then
   export CYANOGEN_RELEASE=true
   # ics needs this
   export CM_RELEASE=true
+  if [ "$SIGNED" = "true" ]
+  then
+    SIGN_BUILD=true
+  fi
+elif [ "$RELEASE_TYPE" = "CM_SNAPSHOT" ]
+then
+  export CM_SNAPSHOT=true
+  if [ "$SIGNED" = "true" ]
+  then
+    SIGN_BUILD=true
+  fi
 fi
 
 if [ ! -z "$CM_EXTRAVERSION" ]
